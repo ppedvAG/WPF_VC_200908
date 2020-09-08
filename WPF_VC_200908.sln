@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul03.1_Container", "Cont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul3.2_TextboxUebung", "TextboxUebung\Modul3.2_TextboxUebung.csproj", "{1D45A8E2-C5B3-43D4-B521-AF5B8D0744A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonenDb_Bsp", "PersonenDb_Bsp\PersonenDb_Bsp.csproj", "{F78AEDEA-05DB-4884-AF25-F98759D72893}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1D45A8E2-C5B3-43D4-B521-AF5B8D0744A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D45A8E2-C5B3-43D4-B521-AF5B8D0744A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D45A8E2-C5B3-43D4-B521-AF5B8D0744A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F78AEDEA-05DB-4884-AF25-F98759D72893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78AEDEA-05DB-4884-AF25-F98759D72893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F78AEDEA-05DB-4884-AF25-F98759D72893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F78AEDEA-05DB-4884-AF25-F98759D72893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
