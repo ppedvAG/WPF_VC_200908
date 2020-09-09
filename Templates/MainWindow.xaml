@@ -1,0 +1,80 @@
+﻿<Window x:Class="Templates.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Templates"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="367.015" Width="544.972">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="Aqua"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <!--ControlTemplates definieren ein vollständig neues Layout für bestehende Elemente.
+                        Hierbei können alle Controls und Container verwendet werden. Die Zuweisung zu den Elementen
+                        erfolgt über deren Template-Property und den Key des Templates. Die Bindung von Propeties an
+                        Properties des Elements erfolgt über ein TemplateBinding - vgl. auch App.xaml-->
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="DeepSkyBlue" BorderThickness="2" CornerRadius="50"
+                                Height="{TemplateBinding Height}"
+                                Width="{TemplateBinding Width}"
+                                Background="{TemplateBinding Background}">
+                            <!--Statt dem ContentPresenter kann z.B. ein TextBlock verwendet werden, wenn auf speziele Eigenschaften,
+                                    wie z.B. die FontSize eingegangen werden soll-->
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <!--Trigger definieren veränderte Properties, wenn bestimmte Zustände eintreten-->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="DarkBlue"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>            
+        </Style>
+    </Window.Resources>
+    
+    <StackPanel>
+        <Button Content="Klick mich!!" Height="100" Width="100" x:Name="Btn_ControlTemplate" Click="Btn_ControlTemplate_Click"/>
+
+        <StackPanel x:Name="Spl_DataContextBsp">
+
+            <!--Der DataContext eines Elements (Window / Panel / ...)  ist ein Satz von Daten an dessen Eigenschaften die Properties dieses Elements
+            bzw. der Unterelemente durch vereinfachte Bindung [Syntax: Binding DatenName] verknüpt werden können. Dieser DataContext kann ein
+            instanziiertes Objekt sein, eine Liste von Objekten oder das Window selber.-->
+            <StackPanel.DataContext>
+                <local:Person Vorname="Anna" Nachname="Meier" Alter="26"/>
+            </StackPanel.DataContext>
+            
+            <TextBlock Text="{Binding Vorname}"/>
+            <TextBlock Text="{Binding Nachname}"/>
+            <TextBlock Text="{Binding Alter}"/>
+
+            <Button x:Name="Btn_Altern" Content="Altern" Click="Btn_Altern_Click"/>
+        </StackPanel>
+
+        <ListBox x:Name="Lbx_Personen" Height="100" ItemsSource="{Binding Personenliste}">
+            <ListBox.ItemTemplate>
+                <!--DataTemplates sind Vorlagen für das Layout von Items in ItemControls (z.B. ListView). Die Bindung erfolgt über die
+                    ItemSource des Zielelements.-->
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Vorname}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Nachname}"/>
+                        <TextBlock Text="{Binding Alter, StringFormat= ({0})}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="Btn_Neu" Content="Neue Person" Click="Btn_Neu_Click"/>
+        <Button x:Name="Btn_Loeschen" Content="Lösche Person" Click="Btn_Loeschen_Click"/>
+
+    </StackPanel>
+</Window>

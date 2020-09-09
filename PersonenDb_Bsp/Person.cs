@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Media;
+
+namespace PersonenDb_Bsp
+{
+    public enum Gender { Männlich, Weiblich, Divers}
+
+    public class Person
+    {
+        public string Vorname { get; set; }
+
+        public string Nachname { get; set; }
+
+        public DateTime Geburtsdatum { get; set; }
+
+        public bool Verheiratet { get; set; }
+
+        public Color Lieblingsfarbe { get; set; }
+
+        public Gender Geschlecht { get; set; }
+
+        public Person()
+        {
+            this.Vorname = "";
+            this.Nachname = "";
+            this.Geburtsdatum = DateTime.Now;
+        }
+
+    }
+}
