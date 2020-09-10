@@ -45,6 +45,8 @@ namespace PersonenDb_Bsp
         private void Btn_Abbruch_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+
+            //Application.Current.Shutdown();
         }
     }
 }
