@@ -31,6 +31,16 @@ namespace PersonenDb_Bsp
             this.Geburtsdatum = DateTime.Now;
         }
 
+        public Person(Person originalPerson)
+        {
+            this.Vorname = originalPerson.Vorname;
+            this.Nachname = originalPerson.Nachname;
+            this.Verheiratet = originalPerson.Verheiratet;
+            this.Lieblingsfarbe = originalPerson.Lieblingsfarbe;
+            this.Geschlecht = originalPerson.Geschlecht;
+            this.Geburtsdatum = new DateTime(originalPerson.Geburtsdatum.Year, originalPerson.Geburtsdatum.Month, originalPerson.Geburtsdatum.Day);
+        }
+
     public string Error
     {
         get { return ""; }
