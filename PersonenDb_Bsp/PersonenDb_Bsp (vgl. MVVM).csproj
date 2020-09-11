@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SelectionToBoolConverter.cs" />
+    <Compile Include="StringToBrushConverter.cs" />
     <Page Include="Db_Ansicht.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

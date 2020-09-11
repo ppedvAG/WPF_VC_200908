@@ -38,11 +38,11 @@
             </Button.Background>
         </Button>
 
-        <Button>
+        <Button Click="Button_Click">
             <!--Controls, welche eine Content-Eigenschaft besitzen, kann diese zwischen den Tags
             zugewiesen werden. Ist die Content-Eigenschaft nicht vorhanden, kann hier die entsprechende 
             'Haupt'-Eigenschaft gesetzt werden (z.B. Text).-->
-            Hallo WPF
+            Fenster Schließen
         </Button>
     </StackPanel>
 </Window>

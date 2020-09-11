@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HalloWPF
+namespace Localisation
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,18 +27,17 @@ namespace HalloWPF
             InitializeComponent();
         }
 
-        private void Btn_BeispielButton_Click(object sender, RoutedEventArgs e)
-        {
-            Btn_BeispielButton.Content = "Ich wurde angeklickt";
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Schließen des Fensters
-            this.Close();
+            if (Thread.CurrentThread.CurrentUICulture.Equals(CultureInfo.CreateSpecificCulture("en-US")))
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-DE");
 
-            //Beenden der Applikation
-            Application.Current.Shutdown();
+            else
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+
+            (new MainWindow()).Show();
+
+            this.Close();
         }
     }
 }

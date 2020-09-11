@@ -13,30 +13,31 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HalloWPF
+namespace Commands
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Command-Property
+        public CustomCommand CloseCmd { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void Btn_BeispielButton_Click(object sender, RoutedEventArgs e)
-        {
-            Btn_BeispielButton.Content = "Ich wurde angeklickt";
-        }
+            //Initialisierung des Commands mit Übergabe der beiden benötigten Methoden in Lamda-Schreibweise
+            this.CloseCmd = new CustomCommand
+                (
+                    //CanExecute
+                    p => (p as MainWindow).Width > 500,
+                    //Execute
+                    p => (p as MainWindow).Close()
+                );
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //Schließen des Fensters
-            this.Close();
-
-            //Beenden der Applikation
-            Application.Current.Shutdown();
+            //Setzen des DataContext, damit die Kurzbindung an das Command funktioniert
+            this.DataContext = this;
         }
     }
 }

@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="Db_Ansicht" Height="450" Width="800"
         Style="{StaticResource Sty_Wnd}">
+    <Window.Resources>
+        <local:SelectionToBoolConverter x:Key="selection2bool"/>
+        <local:StringToBrushConverter x:Key="string2brush"/>
+    </Window.Resources>
+    
     <DockPanel Margin="5">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Datei">
@@ -21,10 +26,12 @@
                     Click="Btn_Neu_Click"/>
             <Button x:Name="Btn_Aendern"
                     Content="Ändere Person"
-                    Click="Btn_Aendern_Click"/>
+                    Click="Btn_Aendern_Click"
+                    IsEnabled="{Binding ElementName=Dgd_Personen, Path=SelectedItem, Converter={StaticResource selection2bool}}"/>
             <Button x:Name="Btn_Loeschen"
                     Content="Lösche Person"
-                    Click="Btn_Loeschen_Click"/>
+                    Click="Btn_Loeschen_Click"
+                    IsEnabled="{Binding ElementName=Dgd_Personen, Path=SelectedItem, Converter={StaticResource selection2bool}}"/>
         </WrapPanel>
         <DataGrid x:Name="Dgd_Personen"
                   Margin="10"
@@ -37,7 +44,13 @@
                 <DataGridTextColumn Header="Geschlecht" Binding="{Binding Geschlecht}" Width="Auto"/>
                 <DataGridTextColumn Header="Geburtsdatum" Binding="{Binding Geburtsdatum, StringFormat=dd.MM.yyyy}" Width="Auto"/>
                 <DataGridCheckBoxColumn Header="Verheiratet" Binding="{Binding Verheiratet}" Width="Auto"/>
-                <DataGridTextColumn Header="Lieblingsfarbe" Binding="{Binding Lieblingsfarbe}" Width="Auto"/>
+                <DataGridTextColumn Header="Lieblingsfarbe" Binding="{Binding Lieblingsfarbe}" Width="Auto">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Background" Value="{Binding Lieblingsfarbe, Converter={StaticResource string2brush}}"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>
